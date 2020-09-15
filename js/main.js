@@ -13,9 +13,12 @@ $(document).ready(function(){
   }
 
 
+
+
+
+  //CUSTOM CONTEXT MENU
   $(document).on('contextmenu', function(){ //deactivating default right click function for the whole document
-    return false;
-    //event.preventDefault(); // we can also use - return false;
+    return false; //we can also use - event.preventDefault();
   })
 
   $(document).on('mousedown', function(event){
@@ -40,6 +43,9 @@ $(document).ready(function(){
 
 
 
+
+
+  //DROPDOWN MENU
   $('[data-trigger="dropdown"]').on('mouseenter', function(){
     let submenu = $(this).parent().find('.sub-menu'); //.parent() - Get the parent of each element in the current set of matched elements, .find() - Get the descendants of each element in the current set of matched elements
     submenu.fadeIn(300); //.fadeIn - Display the matched elements by fading them to opaque.
@@ -76,25 +82,36 @@ $(document).ready(function(){
 
 
 
+
+
+  //SEARCH BUTTON AND SEARCH INPUT
   $('#search-button').on('click', function(){ //.on - Attach an event handler function for one or more events to the selected elements.
     alert("Sorry! Search Bar is currently under development. \nYou won't see this message again.");
     $('#search-button').html("Error!"); //.html - Get the HTML contents of the first element in the set of matched elements or set the HTML contents of every matched element.
     $('#search-button').off('click'); //off - Remove an event handler.
-    $('.my-input').val("");
+    $('.my-input').val(""); //resetting input field
   });
 
 
 
+
+
+  //MAIL-BOX INPUT
   $('input').focusout(printThis);
+
   $('.mail-box').focusout(function(){
-    if(!($(this).val().indexOf('@')>-1) && !($(this).val().indexOf('.')>-1)){
+    if(!($(this).val().indexOf('@')>-1) && !($(this).val().indexOf('.')>-1)){ //checking if the input contains both '@' and '.' or not
       alert('INVALID ID');
     }
   })
 
   $('#submit').on('click', function(){
     alert('Thank you for joining our subscription service!');
-    $('.mail-box').val("");
+    $('.mail-box').val(""); //resetting input field
   })
+
+
+
+
 
 })
